@@ -11,9 +11,12 @@ services:
       dockerfile: contrib/docker/Dockerfile.apache
     image: pixelfed
     restart: unless-stopped
+    env_file:
+      - ./.env.local
     volumes:
       - "app-storage:/var/www/storage"
       - "app-bootstrap:/var/www/bootstrap"
+      - "./.env.local:/var/www/.env"
     networks:
       - external
       - internal
@@ -29,6 +32,8 @@ services:
       dockerfile: contrib/docker/Dockerfile.apache
     image: pixelfed
     restart: unless-stopped
+    env_file:
+      - ./.env.local
     volumes:
       - "app-storage:/var/www/storage"
       - "app-bootstrap:/var/www/bootstrap"
