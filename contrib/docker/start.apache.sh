@@ -4,6 +4,8 @@
 cp -r storage.skel/* storage/
 chown -R www-data:www-data storage/ bootstrap/
 
+php artisan migrate
+
 # Refresh the environment
 php artisan storage:link
 php artisan horizon:publish
